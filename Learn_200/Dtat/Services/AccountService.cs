@@ -6,9 +6,13 @@ public class AccountService : object
 		(ExternalServices.ISmsService smsService) : base()
 	{
 		SmsService = smsService;
+
+		//_smsService = smsService;
 	}
 
 	protected ExternalServices.ISmsService SmsService { get; }
+
+	//private readonly ExternalServices.ISmsService _smsService;
 
 	public string Login
 		(string cellPhoneNumber, string password)
@@ -30,6 +34,8 @@ public class AccountService : object
 			throw new System
 				.Exception(message: errorMessage);
 		}
+
+		// TODO
 
 		var sendSmsResult =
 			SmsService.SendSms(cellPhoneNumber:
