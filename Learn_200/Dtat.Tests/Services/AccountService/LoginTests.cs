@@ -6,6 +6,29 @@ public class LoginTests : object
 	{
 	}
 
+	//[Fact]
+	//public void Test_BadPractice()
+	//{
+	//	// Arrange
+	//	var smsService =
+	//		new ExternalServices.SmsService();
+
+	//	var accountService =
+	//		new Dtat.Services.AccountService(smsService: smsService);
+
+	//	// Act and Assert
+	//	var ex =
+	//		Record.Exception(() =>
+	//		{
+	//			var result = accountService.Login
+	//				(cellPhoneNumber: "09123456789", password: "1234567890");
+	//		});
+
+	//	Assert.NotNull(@object: ex);
+	//	Assert.IsType<System.Exception>(@object: ex);
+	//	Assert.Equal(expected: "Invalid Username/Password!", actual: ex.Message);
+	//}
+
 	[Fact]
 	public void Test_Username()
 	{
@@ -15,23 +38,11 @@ public class LoginTests : object
 			new Moq.Mock<Dtat.ExternalServices.ISmsService>();
 		// **************************************************
 
-		//var accountService =
-		//	new Dtat.Services.AccountService
-		//	(smsService: new Dtat.ExternalServices.SmsService());
-
-		//var accountService =
-		//	new Dtat.Services.AccountService
-		//	(smsService: new Dtat.ExternalServices.MockSuccessSmsService());
-
-		//var accountService =
-		//	new Dtat.Services.AccountService
-		//	(smsService: new Dtat.ExternalServices.MockFailureSmsService());
-
 		var accountService =
 			new Dtat.Services.AccountService
 			(smsService: mockSmsService.Object);
 
-		// Act and Assert
+		// Act
 		var ex =
 			Record.Exception(() =>
 			{
@@ -39,6 +50,7 @@ public class LoginTests : object
 					(cellPhoneNumber: "09123456789", password: "1234567890");
 			});
 
+		// Assert
 		Assert.NotNull(@object: ex);
 		Assert.IsType<System.Exception>(@object: ex);
 		Assert.Equal(expected: "Invalid Username/Password!", actual: ex.Message);
@@ -57,7 +69,7 @@ public class LoginTests : object
 			new Dtat.Services.AccountService
 			(smsService: mockSmsService.Object);
 
-		// Act and Assert
+		// Act
 		var ex =
 			Record.Exception(() =>
 			{
@@ -65,6 +77,7 @@ public class LoginTests : object
 					(cellPhoneNumber: "09121087461", password: "1234567890");
 			});
 
+		// Assert
 		Assert.NotNull(@object: ex);
 		Assert.IsType<System.Exception>(@object: ex);
 		Assert.Equal(expected: "Invalid Username/Password!", actual: ex.Message);
@@ -78,8 +91,9 @@ public class LoginTests : object
 		var mockSmsService =
 			new Moq.Mock<Dtat.ExternalServices.ISmsService>();
 
-		mockSmsService.Setup(current => current
-			.SendSms(Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
+		mockSmsService.Setup(current =>
+			current.SendSms
+			(Moq.It.IsAny<string>(), Moq.It.IsAny<string>()))
 			.Returns(value: false);
 		// **************************************************
 
@@ -87,7 +101,7 @@ public class LoginTests : object
 			new Dtat.Services.AccountService
 			(smsService: mockSmsService.Object);
 
-		// Act and Assert
+		// Act
 		var ex =
 			Record.Exception(() =>
 			{
@@ -95,6 +109,7 @@ public class LoginTests : object
 					(cellPhoneNumber: "09121087461", password: "1234512345");
 			});
 
+		// Assert
 		Assert.NotNull(@object: ex);
 		Assert.IsType<System.Exception>(@object: ex);
 		Assert.Equal(expected: "SMS center is down!", actual: ex.Message);

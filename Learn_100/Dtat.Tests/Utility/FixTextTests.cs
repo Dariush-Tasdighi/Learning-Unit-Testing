@@ -28,8 +28,10 @@ public class FixTextTests : object
 			utility.FixText(text: null);
 
 		// Assert
-		Assert.Equal
-			(expected: string.Empty, actual: result);
+		//Assert.Equal
+		//	(expected: null, actual: result);
+
+		Assert.Null(@object: result);
 	}
 
 	[Fact]
@@ -44,8 +46,7 @@ public class FixTextTests : object
 			utility.FixText(text: string.Empty);
 
 		// Assert
-		Assert.Equal
-			(expected: string.Empty, actual: result);
+		Assert.Null(@object: result);
 	}
 
 	[Fact]
@@ -60,8 +61,7 @@ public class FixTextTests : object
 			utility.FixText(text: "     ");
 
 		// Assert
-		Assert.Equal
-			(expected: string.Empty, actual: result);
+		Assert.Null(@object: result);
 	}
 
 	[Fact]

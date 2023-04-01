@@ -1,17 +1,17 @@
 ﻿namespace Dtat;
 
 // **************************************************
-public class Utility : object
-{
-	public Utility() : base()
-	{
-	}
+//public class Utility : object
+//{
+//	public Utility() : base()
+//	{
+//	}
 
-	public string FixText(string? text)
-	{
-		return text;
-	}
-}
+//	public string? FixText(string? text)
+//	{
+//		return text;
+//	}
+//}
 // **************************************************
 
 // **************************************************
@@ -21,11 +21,11 @@ public class Utility : object
 //	{
 //	}
 
-//	public string FixText(string? text)
+//	public string? FixText(string? text)
 //	{
-//		if (text == null)
+//		if (string.IsNullOrWhiteSpace(value: text))
 //		{
-//			return string.Empty;
+//			return null;
 //		}
 
 //		return text;
@@ -40,11 +40,11 @@ public class Utility : object
 //	{
 //	}
 
-//	public string FixText(string? text)
+//	public string? FixText(string? text)
 //	{
-//		if (text == null)
+//		if (string.IsNullOrWhiteSpace(value: text))
 //		{
-//			return string.Empty;
+//			return null;
 //		}
 
 //		text =
@@ -62,11 +62,11 @@ public class Utility : object
 //	{
 //	}
 
-//	public string FixText(string? text)
+//	public string? FixText(string? text)
 //	{
-//		if (text == null)
+//		if (string.IsNullOrWhiteSpace(value: text))
 //		{
-//			return string.Empty;
+//			return null;
 //		}
 
 //		text =
@@ -75,35 +75,41 @@ public class Utility : object
 //		text = text.Replace
 //			(oldValue: "  ", newValue: " ");
 
+//		//text = text.Replace
+//		//	(oldValue: "   ", newValue: " ");
+
+//		//text = text.Replace
+//		//	(oldValue: "   ", newValue: " ");
+
 //		return text;
 //	}
 //}
 // **************************************************
 
 // **************************************************
-//public class Utility : object
-//{
-//	public Utility() : base()
-//	{
-//	}
+public class Utility : object
+{
+	public Utility() : base()
+	{
+	}
 
-//	public string FixText(string? text)
-//	{
-//		if (text == null)
-//		{
-//			return string.Empty;
-//		}
+	public string? FixText(string? text)
+	{
+		if (string.IsNullOrWhiteSpace(value: text))
+		{
+			return null;
+		}
 
-//		text =
-//			text.Trim();
+		text =
+			text.Trim();
 
-//		while (text.Contains(value: "  "))
-//		{
-//			text = text.Replace
-//				(oldValue: "  ", newValue: " ");
-//		}
+		while (text.Contains(value: "  "))
+		{
+			text = text.Replace
+				(oldValue: "  ", newValue: " ");
+		}
 
-//		return text;
-//	}
-//}
+		return text;
+	}
+}
 // **************************************************

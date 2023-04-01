@@ -6,12 +6,24 @@ public class AccountService : object
 		(ExternalServices.ISmsService smsService) : base()
 	{
 		SmsService = smsService;
-
 		//_smsService = smsService;
 	}
 
+	/// <summary>
+	/// Field
+	/// </summary>
 	//private readonly ExternalServices.ISmsService _smsService;
+
+	/// <summary>
+	/// Property
+	/// </summary>
 	protected ExternalServices.ISmsService SmsService { get; init; }
+
+	//public string Login
+	//	(string cellPhoneNumber, string password)
+	//{
+	//	return "Token";
+	//}
 
 	public string Login
 		(string cellPhoneNumber, string password)
