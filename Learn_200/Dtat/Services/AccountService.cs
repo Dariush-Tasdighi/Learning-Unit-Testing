@@ -10,9 +10,8 @@ public class AccountService : object
 		//_smsService = smsService;
 	}
 
-	protected ExternalServices.ISmsService SmsService { get; }
-
 	//private readonly ExternalServices.ISmsService _smsService;
+	protected ExternalServices.ISmsService SmsService { get; init; }
 
 	public string Login
 		(string cellPhoneNumber, string password)
